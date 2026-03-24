@@ -15,6 +15,14 @@ return {
       completion = {
         nvim_cmp = true,
       },
+
+      ui = {
+        enable = false,
+      },
+
+      note_frontmatter_func = function(_)
+        return {}
+      end,
     },
   },
 }
