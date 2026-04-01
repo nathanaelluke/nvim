@@ -39,8 +39,6 @@ vim.lsp.config('clangd', {
 vim.lsp.enable('clangd')
 vim.cmd("syntax enable")
 vim.opt.conceallevel = 1
-vim.keymap.set("v", ">", ">gv", { noremap = true, desc = "Indent right and reselect" })
-vim.keymap.set("v", "<", "<gv", { noremap = true, desc = "Indent left and reselect" })
 vim.diagnostic.config({
     virtual_text = true,
 })
@@ -52,4 +50,3 @@ local function quickfix()
         apply = true
     })
 end
-

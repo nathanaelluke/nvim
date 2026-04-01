@@ -9,7 +9,4 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   cmd = "Neogit",
-  keys = {
-    { "<leader>gg", "<cmd>Neogit<cr>", desc = "Show Neogit UI" }
-  }
 }

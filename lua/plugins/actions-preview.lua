@@ -4,16 +4,6 @@ return {
     "nvim-telescope/telescope.nvim",
   },
   event = "LspAttach",
-  keys = {
-    {
-      "<leader>ca",
-      function()
-        require("actions-preview").code_actions()
-      end,
-      mode = { "n", "v" },
-      desc = "Code Actions Preview",
-    },
-  },
   opts = {
     backend = { "telescope" },
 

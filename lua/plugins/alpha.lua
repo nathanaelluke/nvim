@@ -34,7 +34,7 @@ return {
       dashboard.button("f", "  > find file", ":Telescope find_files<CR>"),
       dashboard.button("g", "  > find text", ":Telescope live_grep<CR>"),
       dashboard.button("r", "  > recent", ":Telescope oldfiles<CR>"),
-      dashboard.button("q", "  > quit", ":q<CR>"),
+      dashboard.button("z", "  > quit", ":q<CR>"),
     }
 
     alpha.setup(dashboard.opts)
