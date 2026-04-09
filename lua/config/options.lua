@@ -3,6 +3,7 @@ vim.g.maplocalleader = "\\"
 vim.opt.clipboard = "unnamedplus"
 vim.cmd("set termguicolors")
 vim.cmd("set number")
+vim.cmd.colorscheme("moon")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.api.nvim_create_autocmd("VimEnter", {
