@@ -418,7 +418,7 @@ return {
             path = "/home/nathanael/GitHub/Vault/",
           },
         },
-        notes_subdir = "Notes",
+        notes_subdir = "notes",
         new_notes_location = "notes_subdir",
         note_id_func = function(title)
           if title and title ~= "" then

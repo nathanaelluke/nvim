@@ -8,8 +8,8 @@ return {
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
     local vault_root = vim.fs.normalize("/home/nathanael/GitHub/Vault")
-    local home_note = vault_root .. "/Home.md"
-    local notes_dir = vault_root .. "/Notes"
+    local home_note = vault_root .. "/home.md"
+    local notes_dir = vault_root .. "/notes"
 
     local function in_vault_cwd()
       local cwd = vim.fs.normalize(vim.fn.getcwd())
@@ -119,9 +119,10 @@ return {
 
     local function make_vault_dashboard()
       set_header({
-        [[▄▖▌   ▘ ▌▘  ▘   ]],
-        [[▌▌▛▌▛▘▌▛▌▌▌▌▌▛▛▌]],
-        [[▙▌▙▌▄▌▌▙▌▌▚▘▌▌▌▌]],
+        [[                   ]],
+        [[   ▄▖▌   ▘ ▌▘  ▘   ]],
+        [[   ▌▌▛▌▛▘▌▛▌▌▌▌▌▛▛▌]],
+        [[   ▙▌▙▌▄▌▌▙▌▌▚▘▌▌▌▌]],
       })
 
       set_buttons({
