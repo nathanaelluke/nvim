@@ -16,6 +16,12 @@ return {
         path = "/home/nathanael/github/vault/",
       },
     },
-
+    ui = {
+      enable = true,
+      hl_groups = {
+        ObsidianRefText = { underline = true, fg = "#666666" },
+        ObsidianExtLinkIcon = { fg = "#666666" },
+      },
+    },
   },
 }

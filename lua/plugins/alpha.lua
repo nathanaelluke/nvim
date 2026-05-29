@@ -7,7 +7,7 @@ return {
   config = function()
     local alpha = require("alpha")
     local dashboard = require("alpha.themes.dashboard")
-    local vault_root = vim.fs.normalize("/home/nathanael/GitHub/Vault")
+    local vault_root = vim.fs.normalize("/home/nathanael/github/vault")
     local home_note = vault_root .. "/home.md"
     local notes_dir = vault_root .. "/notes"
 

@@ -86,3 +86,37 @@ map("n", "<M-l>", function()
   require("harpoon"):list():next()
 end, { desc = "Harpoon next file" })
 
+local theme_file = vim.fn.stdpath("data") .. "/current_theme.txt"
+
+vim.keymap.set("n", "<leader>th", function()
+  local actions = require("telescope.actions")
+  local action_state = require("telescope.actions.state")
+
+  require("telescope.builtin").colorscheme({
+    enable_preview = true,
+    ignore_builtins = true,
+    
+    -- This hooks into the picker to run our custom save logic
+    attach_mappings = function(prompt_bufnr, map)
+      actions.select_default:replace(function()
+        -- Get the theme the user hit Enter on
+        local selection = action_state.get_selected_entry()
+        actions.close(prompt_bufnr)
+
+        if selection then
+          local theme_name = selection.value
+          
+          vim.cmd.colorscheme(theme_name)
+
+          local f = io.open(theme_file, "w")
+          if f then
+            f:write(theme_name)
+            f:close()
+            vim.notify("Default theme updated to: " .. theme_name, vim.log.levels.INFO)
+          end
+        end
+      end)
+      return true
+    end,
+  })
+end, { desc = "Telescope: Theme Selector (Persistent)" })
