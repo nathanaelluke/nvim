@@ -9,9 +9,10 @@
   "harpoon": { "branch": "harpoon2", "commit": "87b1a3506211538f460786c23f98ec63ad9af4e5" },
   "lazy.nvim": { "branch": "main", "commit": "306a05526ada86a7b30af95c5cc81ffba93fef97" },
   "mini.icons": { "branch": "main", "commit": "520995f1d75da0e4cc901ee95080b1ff2bc46b94" },
-  "mini.nvim": { "branch": "main", "commit": "44657837c7338e52727facc85c1d95bec1f6bd7c" },
+  "mini.nvim": { "branch": "main", "commit": "9d0b9b7188d5c24b5a87f0d8b383ec8bda7a0de4" },
   "neogit": { "branch": "master", "commit": "99326a1310fb2d616b455d2fd16d01bf00682f06" },
   "neomodern.nvim": { "branch": "main", "commit": "d41469578922a23d75a0d9e8deef1e34837230a6" },
+  "nvim-autopairs": { "branch": "master", "commit": "7b9923abad60b903ece7c52940e1321d39eccc79" },
   "nvim-cmp": { "branch": "main", "commit": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca" },
   "nvim-colorizer.lua": { "branch": "master", "commit": "5cfe7fffbd01e17b3c1e14af85d5febdef88bd8c" },
   "nvim-treesitter": { "branch": "main", "commit": "4916d6592ede8c07973490d9322f187e07dfefac" },
@@ -23,5 +24,5 @@
   "termcolors.nvim": { "branch": "master", "commit": "2216b7ad7f4781c7d5160f213f4c99f8e0381f12" },
   "vimtex": { "branch": "master", "commit": "24e229914182ff301496a3e2c4214b28c4928d3f" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
-  "yazi.nvim": { "branch": "main", "commit": "b48b375b810e02616d50150bfcd6298f8b37c3fa" }
+  "yazi.nvim": { "branch": "main", "commit": "3902c5d06be1242e6000ef8166ee35fa768c8332" }
 }

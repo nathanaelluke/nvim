@@ -109,7 +109,7 @@ return {
       })
 
       set_buttons({
-        dashboard.button("b", "  > browse files", ":Yazi<CR>"),
+        dashboard.button("y", "  > browse files", ":Yazi<CR>"),
         dashboard.button("f", "  > find file", ":Telescope find_files<CR>"),
         dashboard.button("g", "  > find text", ":Telescope live_grep<CR>"),
         dashboard.button("r", "  > recent", ":Telescope oldfiles<CR>"),
@@ -128,7 +128,7 @@ return {
       set_buttons({
         dashboard.button("h", "  > home", string.format(":edit %s<CR>", vim.fn.fnameescape(home_note))),
         dashboard.button("n", "  > new note", ":VaultNewNote<CR>"),
-        dashboard.button("b", "  > browse vault", string.format(":cd %s | Yazi<CR>", vim.fn.fnameescape(vault_root))),
+        dashboard.button("y", "  > browse vault", string.format(":cd %s | Yazi<CR>", vim.fn.fnameescape(vault_root))),
         dashboard.button("z", "  > quit", ":q<CR>"),
       })
     end
