@@ -1,2 +1,1 @@
-# nvim
-Neovim configuration built with `lazy.nvim`.
+neovim configuration built with `lazy.nvim`.
