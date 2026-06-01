@@ -1,7 +1,7 @@
-# Neovim Configuration
+# nvim
 neovim configuration built with `lazy.nvim`.
 
-## Plugins
+## plugins
 * actions-preview.nvim
 * alpha-nvim
 * blink.cmp
@@ -27,13 +27,13 @@ neovim configuration built with `lazy.nvim`.
 * which-key.nvim
 * yazi.nvim
 
-## Themes
+## themes
 * mellow.nvim
 * neomodern.nvim
 * termcolors.nvim
 * vague.nvim
 
-## Telescope Usage
+## telescope usage
 * find files
 * live grep
 * buffers
