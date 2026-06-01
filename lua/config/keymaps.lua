@@ -88,7 +88,7 @@ end, { desc = "Harpoon next file" })
 
 local theme_file = vim.fn.stdpath("data") .. "/current_theme.txt"
 
-vim.keymap.set("n", "<leader>th", function()
+vim.keymap.set("n", "<leader>tw", function()
   local actions = require("telescope.actions")
   local action_state = require("telescope.actions.state")
 
@@ -119,4 +119,4 @@ vim.keymap.set("n", "<leader>th", function()
       return true
     end,
   })
-end, { desc = "Telescope: Theme Selector (Persistent)" })
+end, { desc = "Telescope: Theme Selector" })
