@@ -63,3 +63,10 @@ if f then
 end
 
 pcall(vim.cmd.colorscheme, theme_to_load)
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = { "*.cpp", "*.hpp", "*.c", "*.h" },
+    callback = function()
+        vim.lsp.buf.format({ async = false })
+    end,
+})
