@@ -11,7 +11,7 @@ end
 map('n', '<leader>ff', require('telescope.builtin').find_files, { desc = "Find Files" })
 
 -- Live grep
-map('n', '<leader>fg', require('telescope.builtin').live_grep, { desc = "Live Grep" })
+map('n', '<leader>fw', require('telescope.builtin').live_grep, { desc = "Live Grep" })
 
 -- Buffers
 map('n', '<leader>fb', require('telescope.builtin').buffers, { desc = "Buffers" })

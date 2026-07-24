@@ -16,9 +16,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.opt.expandtab = true      -- use spaces instead of tabs
-vim.opt.shiftwidth = 2        -- indentation size
-vim.opt.tabstop = 2           -- visual width of tabs
-vim.opt.softtabstop = 2       -- spaces per tab while editing
+vim.opt.shiftwidth = 4     -- indentation size
+vim.opt.tabstop = 4           -- visual width of tabs
+vim.opt.softtabstop = 4       -- spaces per tab while editing
 vim.opt.smartindent = true    -- auto-indent new lines
 vim.opt.autoindent = true
 vim.opt.breakindent = true    -- wrapped lines keep indentation
