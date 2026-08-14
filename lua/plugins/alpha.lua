@@ -116,18 +116,22 @@ return {
             })
 
             set_buttons({
-                dashboard.button("y", "  > browse files", ":Yazi<CR>"),
+                dashboard.button("<leader>y", "  > browse files", ":Yazi<CR>"),
                 dashboard.button(
-                    "f",
+                    "<leader>ff",
                     "  > find file",
                     ":Telescope find_files<CR>"
                 ),
                 dashboard.button(
-                    "g",
+                    "<leader>fg",
                     "  > find text",
                     ":Telescope live_grep<CR>"
                 ),
-                dashboard.button("r", "  > recent", ":Telescope oldfiles<CR>"),
+                dashboard.button(
+                    "<leader>fr",
+                    "  > recent",
+                    ":Telescope oldfiles<CR>"
+                ),
                 dashboard.button("z", "  > quit", ":q<CR>"),
             })
         end

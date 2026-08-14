@@ -1,8 +1,7 @@
 return {
     "stevearc/oil.nvim",
     commit = "e89a8f8a",
-    event = "VeryLazy",
-    cmd = "Oil",
+    lazy = false,
     opts = {
         columns = {
             -- "icons",

@@ -21,7 +21,7 @@
   "plenary.nvim": { "branch": "master", "commit": "74b06c6c75e4eeb3108ec01852001636d85a932b" },
   "telescope.nvim": { "branch": "master", "commit": "427b576c16792edad01a92b89721d923c19ad60f" },
   "vague.nvim": { "branch": "main", "commit": "f9060fdaf7b20f68575d6f8214da6f1cf0c72825" },
-  "vimtex": { "branch": "master", "commit": "65e9e9a048e641403731187283e5ea986f00b3ff" },
+  "vimtex": { "branch": "master", "commit": "c49ffdc34e7cec3a1a5b5befba7ca7f7b4916fee" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
-  "yazi.nvim": { "branch": "main", "commit": "cd5c719651fcb93a480fc7a6e4a5ac197dcf8e3e" }
+  "yazi.nvim": { "branch": "main", "commit": "3902c5d06be1242e6000ef8166ee35fa768c8332" }
 }
