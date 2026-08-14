@@ -15,19 +15,8 @@ local function load_saved_colorscheme()
 end
 
 local function setup_colorscheme_autocmds()
-    local light_background_themes = {
-        roseprime = true,
-    }
-
     vim.api.nvim_create_autocmd("ColorScheme", {
         callback = function()
-            local name = vim.g.colors_name
-            if light_background_themes[name] then
-                vim.o.background = "light"
-            else
-                vim.o.background = "dark"
-            end
-
             vim.api.nvim_set_hl(0, "DianosticUnderlineError", {
                 undercurl = true,
                 sp = "#ff0000",
@@ -59,12 +48,6 @@ return {
             require("neomodern").setup({
                 bg = "default",
                 theme = "moon",
-                gutter = { cursorline = false, dark = false },
-                diagnostics = {
-                    darker = true,
-                    undercurl = true,
-                    background = true,
-                },
                 overrides = {},
             })
         end,

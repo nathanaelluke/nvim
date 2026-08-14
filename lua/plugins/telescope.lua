@@ -48,7 +48,6 @@ end
 
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "v0.1.6",
     config = function()
         local actions = require("telescope.actions")
 

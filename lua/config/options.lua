@@ -8,9 +8,9 @@ vim.opt.relativenumber = true
 
 vim.opt.termguicolors = true
 
-vim.opt.colorcolumn = "80"
+vim.cmd("syntax on")
 
-vim.opt.cmdheight = 0
+vim.opt.colorcolumn = "80"
 
 vim.opt.ttimeoutlen = 0
 
