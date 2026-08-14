@@ -17,7 +17,7 @@ end
 local function setup_colorscheme_autocmds()
     vim.api.nvim_create_autocmd("ColorScheme", {
         callback = function()
-            vim.api.nvim_set_hl(0, "DianosticUnderlineError", {
+            vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {
                 undercurl = true,
                 sp = "#ff0000",
             })
