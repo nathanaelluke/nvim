@@ -1,122 +1,57 @@
 local map = vim.keymap.set
 
-local function load_plugin(plugin)
-  local ok, lazy = pcall(require, "lazy")
-  if ok then
-    lazy.load({ plugins = { plugin } })
-  end
-end
+map("x", "<leader>p", '"_dP')
+map("v", "J", ":m '>+1<CR>gv=gv")
+map("v", "K", ":m '<-2<CR>gv=gv")
+map("v", ">", ">gv")
+map("v", "<", "<gv")
 
--- Find files
-map('n', '<leader>ff', require('telescope.builtin').find_files, { desc = "Find Files" })
+map("n", "<leader>h", function()
+    vim.lsp.buf.hover()
+end)
+map("n", "<leader>d", function()
+    vim.diagnostic.open_float(nil, { focus = false })
+end)
+map("n", "<leader>ca", require("actions-preview").code_actions)
+map("n", "gd", vim.lsp.buf.definition)
+map("n", "gD", vim.lsp.buf.declaration)
+map("n", "gi", vim.lsp.buf.implementation)
+map("n", "gr", function()
+    require("telescope.builtin").lsp_references()
+end)
 
--- Live grep
-map('n', '<leader>fw', require('telescope.builtin').live_grep, { desc = "Live Grep" })
+map("n", "<leader>o", "<CMD>Oil<CR>")
+map("n", "<leader>y", "<CMD>Yazi<CR>")
 
--- Buffers
-map('n', '<leader>fb', require('telescope.builtin').buffers, { desc = "Buffers" })
+map("n", "<leader>ff", require("telescope.builtin").find_files)
+map("n", "<leader>fw", require("telescope.builtin").live_grep)
+map("n", "<leader>fr", require("telescope.builtin").oldfiles)
+map("n", "<leader>fb", require("telescope.builtin").buffers)
+map("n", "<leader>fh", require("telescope.builtin").help_tags)
+map("n", "<leader>tw", "<CMD>TelescopeThemePicker<CR>")
 
--- Help tags
-map('n', '<leader>fh', require('telescope.builtin').help_tags, { desc = "Help Tags" })
+map("n", "L", "<CMD>tabn<CR>")
+map("n", "H", "<CMD>tabp<CR>")
+map("n", "<leader>1", "1gt")
+map("n", "<leader>2", "2gt")
+map("n", "<leader>3", "3gt")
+map("n", "<leader>4", "4gt")
+map("n", "<leader>n", "<CMD>tabnew<CR>")
+map("n", "<leader>D", "<CMD>tab split<CR>")
+
+map("n", "<leader>gg", "<CMD>Neogit<CR>")
+map("n", "]g", function()
+    require("gitsigns").next_hunk()
+end)
+map("n", "[g", function()
+    require("gitsigns").prev_hunk()
+end)
+
+map("n", "<leader>cf", function()
+    vim.cmd("write")
+    local file = vim.fn.shellescape(vim.fn.expand("%:p"))
+    vim.fn.system("clang-format -i " .. file)
+    vim.cmd("checktime")
+end)
 
 vim.keymap.del("n", "<C-l>")
-
-vim.keymap.set("n", "<leader>w", function()
-  require("which-key").show({ keys = "<leader>" })
-end, { desc = "Which-Key" })
-
-vim.keymap.set("v", ">", ">gv", { noremap = true, desc = "Indent right and reselect" })
-vim.keymap.set("v", "<", "<gv", { noremap = true, desc = "Indent left and reselect" })
-
-map("n", "<leader>?", function()
-  load_plugin("which-key.nvim")
-  require("which-key").show({ global = false })
-end, { desc = "Buffer Local Keymaps" })
-
-map("n", "<leader>gg", "<cmd>Neogit<cr>", { desc = "Show Neogit UI" })
-
-map({ "n", "v" }, "<leader>ca", function()
-  load_plugin("actions-preview.nvim")
-  require("actions-preview").code_actions()
-end, { desc = "Code Actions Preview" })
-
-map("n", "<leader>y", "<cmd>Yazi<cr>", { desc = "Open yazi at the current file" })
-map("n", "<leader>cw", "<cmd>Yazi cwd<cr>", { desc = "Open the file manager in nvim's working directory" })
-map("n", "<C-Up>", "<cmd>Yazi toggle<cr>", { desc = "Resume the last yazi session" })
-
-map("n", "<M-a>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():add()
-end, { desc = "Harpoon add file" })
-
-map("n", "<C-e>", function()
-  load_plugin("harpoon")
-  local harpoon = require("harpoon")
-  local list = harpoon:list()
-  harpoon.ui:toggle_quick_menu(list)
-end, { desc = "Harpoon menu" })
-
-map("n", "<M-1>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():select(1)
-end, { desc = "Harpoon select file 1" })
-
-map("n", "<M-2>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():select(2)
-end, { desc = "Harpoon select file 2" })
-
-map("n", "<M-3>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():select(3)
-end, { desc = "Harpoon select file 3" })
-
-map("n", "<M-4>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():select(4)
-end, { desc = "Harpoon select file 4" })
-
-map("n", "<M-h>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():prev()
-end, { desc = "Harpoon previous file" })
-
-map("n", "<M-l>", function()
-  load_plugin("harpoon")
-  require("harpoon"):list():next()
-end, { desc = "Harpoon next file" })
-
-local theme_file = vim.fn.stdpath("data") .. "/current_theme.txt"
-
-vim.keymap.set("n", "<leader>tw", function()
-  local actions = require("telescope.actions")
-  local action_state = require("telescope.actions.state")
-
-  require("telescope.builtin").colorscheme({
-    enable_preview = true,
-    ignore_builtins = true,
-    
-    -- This hooks into the picker to run our custom save logic
-    attach_mappings = function(prompt_bufnr, map)
-      actions.select_default:replace(function()
-        -- Get the theme the user hit Enter on
-        local selection = action_state.get_selected_entry()
-        actions.close(prompt_bufnr)
-
-        if selection then
-          local theme_name = selection.value
-          
-          vim.cmd.colorscheme(theme_name)
-
-          local f = io.open(theme_file, "w")
-          if f then
-            f:write(theme_name)
-            f:close()
-            vim.notify("Default theme updated to: " .. theme_name, vim.log.levels.INFO)
-          end
-        end
-      end)
-      return true
-    end,
-  })
-end, { desc = "Telescope: Theme Selector" })

@@ -1,60 +1,50 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+
 vim.opt.clipboard = "unnamedplus"
-vim.cmd("set termguicolors")
-vim.cmd("set number")
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
+vim.opt.termguicolors = true
+
+vim.opt.colorcolumn = "80"
+
+vim.opt.cmdheight = 0
+
+vim.opt.ttimeoutlen = 0
+
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    local arg = vim.fn.argv(0)
-    if arg ~= "" and vim.fn.isdirectory(arg) == 1 then
-      require("telescope.builtin").find_files({ cwd = arg })
-    end
-  end,
-})
+
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
-vim.opt.expandtab = true      -- use spaces instead of tabs
-vim.opt.shiftwidth = 4     -- indentation size
-vim.opt.tabstop = 4           -- visual width of tabs
-vim.opt.softtabstop = 4       -- spaces per tab while editing
-vim.opt.smartindent = true    -- auto-indent new lines
+vim.opt.swapfile = false
+vim.opt.backup = false
+
+vim.opt.wrap = false
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.smartindent = true
 vim.opt.autoindent = true
-vim.opt.breakindent = true    -- wrapped lines keep indentation
-vim.lsp.config('*', {
-  capabilities = {
-    textDocument = {
-      semanticTokens = {
-        multilineTokenSupport = true,
-      }
-    }
-  },
-  root_markers = { '.git' },
-})
-vim.lsp.config('clangd', {
-  filetypes = { 'c', 'cpp', 'h', 'hpp' },
-})
-vim.lsp.enable('clangd')
-vim.cmd("syntax enable")
-vim.opt.conceallevel = 1
-vim.diagnostic.config({
-    virtual_text = true,
-})
-local opts = { noremap=true, silent=true }
+vim.opt.breakindent = true
 
-local function quickfix()
-    vim.lsp.buf.code_action({
-        filter = function(a) return a.isPreferred end,
-        apply = true
-    })
-end
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
 
+vim.opt.signcolumn = "yes"
+vim.opt.scrolloff = 8
 
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.cpp", "*.hpp", "*.c", "*.h" },
+vim.api.nvim_create_autocmd("RecordingEnter", {
     callback = function()
-        vim.lsp.buf.format({ async = false })
+        vim.o.cmdheight = 1
+    end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+    callback = function()
+        vim.o.cmdheight = 0
     end,
 })
