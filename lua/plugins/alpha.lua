@@ -116,7 +116,7 @@ return {
             })
 
             set_buttons({
-                dashboard.button("<leader>y", "  > browse files", ":Yazi<CR>"),
+                dashboard.button("<leader>y", "  > yazi", ":Yazi<CR>"),
                 dashboard.button(
                     "<leader>ff",
                     "  > find file",
