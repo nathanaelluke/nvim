@@ -51,20 +51,3 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
         vim.o.cmdheight = 0
     end,
 })
-
-local arg = vim.fn.argv(0)
-
-if type(arg) == "string" and arg ~= "" then
-    local full_path = vim.fn.fnamemodify(arg, ":p")
-
-    full_path = full_path:gsub("/$", "")
-
-    local dir
-    if vim.fn.isdirectory(full_path) == 1 then
-        dir = full_path
-    else
-        dir = vim.fn.fnamemodify(full_path, ":h")
-    end
-
-    pcall(vim.api.nvim_set_current_dir, dir)
-end
