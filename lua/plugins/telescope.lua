@@ -15,34 +15,107 @@ local function setup_theme_picker_command()
     vim.api.nvim_create_user_command("TelescopeThemePicker", function()
         local actions = require("telescope.actions")
         local action_state = require("telescope.actions.state")
+        local conf = require("telescope.config").values
+        local before_theme = vim.g.colors_name or "default"
+        local before_background = vim.o.background
+        local selected = false
+        local themes = {}
+        local default_selection_index = 1
 
-        require("telescope.builtin").colorscheme({
-            enable_preview = true,
-            ignore_builtins = true,
+        for _, name in ipairs(vim.fn.getcompletion("", "color")) do
+            for _, background in ipairs({ "dark", "light" }) do
+                table.insert(themes, { name = name, background = background })
+                if name == before_theme and background == before_background then
+                    default_selection_index = #themes
+                end
+            end
+        end
 
-            attach_mappings = function(prompt_bufnr, map)
+        local function apply_theme(theme)
+            vim.o.background = theme.background
+            local ok, err = pcall(vim.cmd.colorscheme, theme.name)
+            if not ok then
+                vim.notify(err, vim.log.levels.ERROR)
+            end
+            return ok
+        end
+
+        local bufnr = vim.api.nvim_get_current_buf()
+        local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+        local filetype = vim.bo[bufnr].filetype
+        local picker = require("telescope.pickers").new({}, {
+            prompt_title = "Change Colorscheme",
+            finder = require("telescope.finders").new_table({
+                results = themes,
+                entry_maker = function(theme)
+                    local label = theme.name .. " (" .. theme.background .. ")"
+                    return { value = theme, display = label, ordinal = label }
+                end,
+            }),
+            sorter = conf.generic_sorter({}),
+            default_selection_index = default_selection_index,
+            previewer = require("telescope.previewers").new_buffer_previewer({
+                define_preview = function(self)
+                    vim.api.nvim_buf_set_lines(
+                        self.state.bufnr,
+                        0,
+                        -1,
+                        false,
+                        lines
+                    )
+                    vim.bo[self.state.bufnr].filetype = filetype
+                end,
+            }),
+            attach_mappings = function(prompt_bufnr)
                 actions.select_default:replace(function()
                     local selection = action_state.get_selected_entry()
+                    if not selection or not apply_theme(selection.value) then
+                        return
+                    end
+
+                    selected = true
                     actions.close(prompt_bufnr)
-
-                    if selection then
-                        local theme_name = selection.value
-                        vim.cmd.colorscheme(theme_name)
-
-                        local f = io.open(theme_file, "w")
-                        if f then
-                            f:write(theme_name)
-                            f:close()
-                            vim.notify(
-                                "Default theme updated to: " .. theme_name,
-                                vim.log.levels.INFO
-                            )
-                        end
+                    local theme = selection.value
+                    local f, err = io.open(theme_file, "w")
+                    if f then
+                        f:write(theme.name .. "\n" .. vim.o.background .. "\n")
+                        f:close()
+                        vim.notify(
+                            "Default theme updated to: " .. selection.display,
+                            vim.log.levels.INFO
+                        )
+                    else
+                        vim.notify(
+                            "Could not save theme: " .. err,
+                            vim.log.levels.ERROR
+                        )
                     end
                 end)
                 return true
             end,
         })
+
+        local close_windows = picker.close_windows
+        picker.close_windows = function(status)
+            close_windows(status)
+            if not selected then
+                apply_theme({
+                    name = before_theme,
+                    background = before_background,
+                })
+            end
+        end
+
+        local set_selection = picker.set_selection
+        picker.set_selection = function(self, row)
+            set_selection(self, row)
+            local selection = self:get_selection()
+            if selection then
+                apply_theme(selection.value)
+            end
+        end
+
+        picker:find()
     end, {})
 end
 

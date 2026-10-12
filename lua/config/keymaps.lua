@@ -6,6 +6,8 @@ map("v", "K", ":m '<-2<CR>gv=gv")
 map("v", ">", ">gv")
 map("v", "<", "<gv")
 
+map({ "n", "v" }, "<leader>y", [["+y]])
+
 map("n", "<C-d>", "<C-d>zz")
 map("n", "<C-u>", "<C-u>zz")
 
