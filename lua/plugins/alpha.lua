@@ -41,7 +41,7 @@ return {
                     ":Telescope find_files<CR>"
                 ),
                 dashboard.button(
-                    "<leader>fg",
+                    "<leader>fw",
                     "  > find text",
                     ":Telescope live_grep<CR>"
                 ),
