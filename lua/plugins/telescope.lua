@@ -19,19 +19,23 @@ local function setup_theme_picker_command()
         local before_theme = vim.g.colors_name or "default"
         local before_background = vim.o.background
         local selected = false
-        local themes = {}
+        local variants = require("config.theme_variants")
+        local active_background = variants.background()
+        local themes = variants.list()
         local default_selection_index = 1
 
-        for _, name in ipairs(vim.fn.getcompletion("", "color")) do
-            for _, background in ipairs({ "dark", "light" }) do
-                table.insert(themes, { name = name, background = background })
-                if name == before_theme and background == before_background then
-                    default_selection_index = #themes
-                end
+        for index, theme in ipairs(themes) do
+            if
+                theme.name == before_theme
+                and theme.background == active_background
+            then
+                default_selection_index = index
+                break
             end
         end
 
         local function apply_theme(theme)
+            vim.g.colors_name = nil
             vim.o.background = theme.background
             local ok, err = pcall(vim.cmd.colorscheme, theme.name)
             if not ok then
