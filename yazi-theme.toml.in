@@ -1,0 +1,114 @@
+[app]
+overall = { bg = "{{bg}}" }
+
+[mgr]
+cwd = { fg = "{{accent}}" }
+find_keyword = { fg = "{{fg}}", bg = "{{surface}}", bold = true }
+find_position = { fg = "{{muted}}" }
+symlink_target = { fg = "{{subtle}}", italic = true }
+border_style = { fg = "{{border}}" }
+marker_copied = { fg = "{{muted}}", bg = "{{muted}}" }
+marker_cut = { fg = "{{subtle}}", bg = "{{subtle}}" }
+marker_marked = { fg = "{{muted}}", bg = "{{muted}}" }
+marker_selected = { fg = "{{fg}}", bg = "{{fg}}" }
+count_copied = { fg = "{{fg}}", bg = "{{surface}}" }
+count_cut = { fg = "{{fg}}", bg = "{{surface}}" }
+count_selected = { fg = "{{fg}}", bg = "{{border}}" }
+
+[indicator]
+parent = { fg = "{{fg}}", bg = "{{surface}}", reversed = false }
+current = { fg = "{{selection_fg}}", bg = "{{selection_bg}}", bold = true, reversed = false }
+preview = { }
+padding = { open = "█", close = "█" }
+
+[tabs]
+active = { fg = "{{fg}}", bg = "{{status_bg}}", bold = true }
+inactive = { fg = "{{subtle}}", bg = "{{surface}}" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "{{status_fg}}", bg = "{{status_bg}}", bold = true }
+normal_alt = { fg = "{{muted}}", bg = "{{surface}}" }
+select_main = { fg = "{{selection_fg}}", bg = "{{selection_bg}}", bold = true }
+select_alt = { fg = "{{fg}}", bg = "{{surface}}" }
+unset_main = { fg = "{{fg}}", bg = "{{border}}", bold = true }
+unset_alt = { fg = "{{muted}}", bg = "{{surface}}" }
+
+[status]
+overall = { fg = "{{status_fg}}", bg = "{{status_bg}}" }
+sep_left = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+perm_type = { fg = "{{fg}}" }
+perm_read = { fg = "{{muted}}" }
+perm_write = { fg = "{{muted}}" }
+perm_exec = { fg = "{{muted}}" }
+perm_sep = { fg = "{{subtle}}" }
+progress_label = { fg = "{{fg}}", bold = true }
+progress_normal = { fg = "{{subtle}}", bg = "{{surface}}" }
+progress_error = { fg = "{{error}}", bg = "{{surface}}" }
+
+[which]
+border = { fg = "{{border}}" }
+cand = { fg = "{{fg}}" }
+rest = { fg = "{{subtle}}" }
+desc = { fg = "{{muted}}" }
+separator_style = { fg = "{{subtle}}" }
+
+[confirm]
+border = { fg = "{{border}}" }
+title = { fg = "{{fg}}" }
+btn_yes = { fg = "{{fg}}", bg = "{{status_bg}}", reversed = false }
+btn_no = { fg = "{{muted}}" }
+
+[spot]
+border = { fg = "{{border}}" }
+title = { fg = "{{fg}}" }
+tbl_col = { fg = "{{muted}}" }
+tbl_cell = { fg = "{{selection_fg}}", bg = "{{selection_bg}}", reversed = false }
+
+[notify]
+title_info = { fg = "{{muted}}" }
+title_warn = { fg = "{{warning}}" }
+title_error = { fg = "{{error}}" }
+
+[pick]
+border = { fg = "{{border}}" }
+active = { fg = "{{selection_fg}}", bg = "{{selection_bg}}", bold = true }
+inactive = { fg = "{{muted}}" }
+
+[input]
+border = { fg = "{{border}}" }
+title = { fg = "{{fg}}" }
+value = { fg = "{{fg}}" }
+selected = { fg = "{{fg}}", bg = "{{status_bg}}", reversed = false }
+
+[cmp]
+border = { fg = "{{border}}" }
+active = { fg = "{{selection_fg}}", bg = "{{selection_bg}}", reversed = false }
+inactive = { fg = "{{muted}}" }
+
+[tasks]
+border = { fg = "{{border}}" }
+title = { fg = "{{fg}}" }
+hovered = { fg = "{{selection_fg}}", bg = "{{selection_bg}}" }
+
+[help]
+border = { fg = "{{border}}" }
+chord = { fg = "{{fg}}" }
+action = { fg = "{{muted}}" }
+hovered = { fg = "{{selection_fg}}", bg = "{{selection_bg}}", bold = true, reversed = false }
+
+[filetype]
+rules = [
+    { url = "*", is = "orphan", fg = "{{error}}" },
+    { url = "*/", fg = "{{muted}}" },
+    { url = "*", is = "exec", fg = "{{fg}}" },
+    { url = "*", fg = "{{fg}}" },
+]
+
+[icon]
+prepend_globs = [
+    { url = "*/", text = "", fg = "#555555" },
+]
+

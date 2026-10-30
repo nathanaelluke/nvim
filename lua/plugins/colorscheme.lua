@@ -58,6 +58,7 @@ local function setup_colorscheme_autocmds()
 end
 
 setup_colorscheme_autocmds()
+require("config.yazi_theme").setup()
 
 vim.api.nvim_create_autocmd("VimEnter", {
     callback = function()

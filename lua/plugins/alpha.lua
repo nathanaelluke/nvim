@@ -52,7 +52,7 @@ return {
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "alpha",
             callback = function()
-                vim.bo.bufhidden = "hide"
+                -- Keep Alpha's default wipe behavior so its resize handler is removed.
                 vim.opt_local.fillchars:append({ eob = " " })
             end,
         })
