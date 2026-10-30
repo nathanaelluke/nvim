@@ -1,6 +1,5 @@
 local map = vim.keymap.set
 
-map("x", "<leader>p", '"_dP')
 map("v", "J", ":m '>+1<CR>gv=gv")
 map("v", "K", ":m '<-2<CR>gv=gv")
 map("v", ">", ">gv")
