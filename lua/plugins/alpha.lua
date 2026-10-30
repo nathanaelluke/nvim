@@ -52,6 +52,7 @@ return {
         vim.api.nvim_create_autocmd("FileType", {
             pattern = "alpha",
             callback = function()
+                vim.bo.bufhidden = "hide"
                 vim.opt_local.fillchars:append({ eob = " " })
             end,
         })
