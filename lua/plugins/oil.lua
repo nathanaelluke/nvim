@@ -14,7 +14,7 @@ end
 
 return {
     "stevearc/oil.nvim",
-    commit = "e89a8f8a",
+    commit = "b73018b75affd13fa38e2fc94ef753b465f770d7",
     lazy = false,
     opts = {
         columns = {},

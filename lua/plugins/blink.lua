@@ -1,6 +1,9 @@
 return {
     "saghen/blink.cmp",
-    dependencies = { "rafamadriz/friendly-snippets" },
+    dependencies = {
+        "rafamadriz/friendly-snippets",
+        "ribru17/blink-cmp-spell",
+    },
 
     version = "1.*",
     opts = {
@@ -15,6 +18,19 @@ return {
 
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
+            per_filetype = {
+                markdown = { inherit_defaults = true, "spell" },
+            },
+            providers = {
+                spell = {
+                    name = "Spell",
+                    module = "blink-cmp-spell",
+                    opts = {
+                        preselect_current_word = false,
+                        use_cmp_spell_sorting = true,
+                    },
+                },
+            },
         },
 
         fuzzy = { implementation = "prefer_rust_with_warning" },

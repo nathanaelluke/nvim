@@ -19,12 +19,23 @@ return {
                 html = { "prettier" },
                 json = { "prettier" },
                 yaml = { "prettier" },
-                markdown = { "prettier" },
+                markdown = { "prettier_markdown" },
                 graphql = { "prettier" },
                 lua = { "stylua" },
                 python = { "isort", "black" },
                 cpp = { "clang-format" },
                 c = { "clang-format" },
+            },
+            formatters = {
+                prettier_markdown = {
+                    inherit = "prettier",
+                    prepend_args = {
+                        "--prose-wrap",
+                        "always",
+                        "--print-width",
+                        "80",
+                    },
+                },
             },
         })
     end,
