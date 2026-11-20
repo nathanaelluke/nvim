@@ -14,7 +14,13 @@ map("n", "<C-u>", "<C-u>zz")
 map("n", "<leader>d", function()
     vim.diagnostic.open_float(nil, { focus = false })
 end)
-map("n", "<leader>ca", require("actions-preview").code_actions)
+map({ "n", "v" }, "<leader>ca", function()
+    if #vim.lsp.get_clients({ bufnr = 0 }) == 0 then
+        vim.notify("No language server attached to this buffer", vim.log.levels.WARN)
+        return
+    end
+    require("actions-preview").code_actions()
+end, { desc = "Code actions" })
 map("n", "gd", vim.lsp.buf.definition)
 map("n", "gD", vim.lsp.buf.declaration)
 map("n", "gr", function()

@@ -1,4 +1,5 @@
 require("config.options")
 require("config.lazy")
+vim.cmd("syntax on")
 require("config.lsp")
 require("config.keymaps")

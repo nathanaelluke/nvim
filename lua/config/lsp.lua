@@ -1,6 +1,10 @@
 vim.lsp.config("clangd", {
     filetypes = { "c", "cpp", "h", "hpp" },
-    root_markers = { ".clangd", ".clang-tidy", ".clang-format" },
+    root_markers = {
+        { ".clangd", "compile_commands.json", "compile_flags.txt" },
+        ".git",
+        { ".clang-tidy", ".clang-format" },
+    },
     cmd = { "clangd", "--background-index" },
 })
 

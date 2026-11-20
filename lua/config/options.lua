@@ -7,8 +7,6 @@ vim.opt.spellsuggest = "best,8"
 
 vim.opt.termguicolors = true
 
-vim.cmd("syntax on")
-
 vim.opt.colorcolumn = "80"
 
 vim.opt.ttimeoutlen = 0

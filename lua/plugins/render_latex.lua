@@ -6,9 +6,9 @@ return {
         render = {
             preset = "compact",
             match_text_size = true,
-            text_scale = 0.85,
+            text_scale = 0.525,
             scale = 1.25,
-            padding = 0,
+            padding = 4,
 
             equation_labels = "right",
             equation_label_format = "(%d)",
@@ -24,7 +24,7 @@ return {
         local latex = require("render_latex")
 
         local reference_width = 113
-        local reference_scale = 0.85
+        local reference_scale = 0.525
         local min_scale = 0.40
         local max_scale = 1.10
 
