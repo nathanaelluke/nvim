@@ -3,6 +3,7 @@ vim.g.maplocalleader = "\\"
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
+vim.opt.spellsuggest = "best,8"
 
 vim.opt.termguicolors = true
 
