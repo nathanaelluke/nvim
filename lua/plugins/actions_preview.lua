@@ -6,6 +6,7 @@ return {
     event = "LspAttach",
     opts = {
         backend = { "telescope" },
+        telescope = {},
 
         highlight_command = {
             function()
