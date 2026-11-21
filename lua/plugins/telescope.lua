@@ -44,11 +44,9 @@ local function setup_theme_picker_command()
             return ok
         end
 
-        local bufnr = vim.api.nvim_get_current_buf()
-        local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
-        local filetype = vim.bo[bufnr].filetype
         local picker = require("telescope.pickers").new({}, {
             prompt_title = "Change Colorscheme",
+            layout_config = { height = 0.3 },
             finder = require("telescope.finders").new_table({
                 results = themes,
                 entry_maker = function(theme)
@@ -58,18 +56,7 @@ local function setup_theme_picker_command()
             }),
             sorter = conf.generic_sorter({}),
             default_selection_index = default_selection_index,
-            previewer = require("telescope.previewers").new_buffer_previewer({
-                define_preview = function(self)
-                    vim.api.nvim_buf_set_lines(
-                        self.state.bufnr,
-                        0,
-                        -1,
-                        false,
-                        lines
-                    )
-                    vim.bo[self.state.bufnr].filetype = filetype
-                end,
-            }),
+            previewer = false,
             attach_mappings = function(prompt_bufnr)
                 actions.select_default:replace(function()
                     local selection = action_state.get_selected_entry()
@@ -140,12 +127,12 @@ return {
                     "┘",
                     "└",
                 },
-                layout_strategy = "horizontal",
+                layout_strategy = "vertical",
                 previewer = true,
                 layout_config = {
-                    horizontal = { width = 0.95 },
+                    width = 82,
+                    height = 0.85,
                     preview_cutoff = 0,
-                    preview_width = 0.5,
                 },
                 mappings = {
                     n = {
