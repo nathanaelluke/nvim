@@ -21,7 +21,6 @@ neovim configuration built with `lazy.nvim`.
 * nvim-web-devicons
 * obsidian.nvim
 * plenary.nvim
-* render-markdown.nvim
 * telescope.nvim
 * vimtex
 * which-key.nvim
