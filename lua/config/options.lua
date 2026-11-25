@@ -5,6 +5,8 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.spellsuggest = "best,8"
 
+vim.opt.conceallevel = 3
+
 vim.opt.termguicolors = true
 
 vim.opt.colorcolumn = "80"
@@ -22,7 +24,7 @@ vim.opt.undodir = vim.fn.stdpath("data") .. "/undo"
 vim.opt.swapfile = false
 vim.opt.backup = false
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
